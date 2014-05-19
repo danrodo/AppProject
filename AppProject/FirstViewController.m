@@ -10,6 +10,9 @@
 
 @interface FirstViewController ()
 
+@property (nonatomic, strong) UIButton *cameraButton;
+@property (nonatomic, strong) UIButton *foldersButton;
+
 @end
 
 @implementation FirstViewController
@@ -19,21 +22,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = [UIColor blackColor];
+    
+    UIButton *cb = [UIButton buttonWithType:UIButtonTypeSystem];
+    [cb setTitle:@"Create Folder" forState:UIControlStateNormal];
+    [self.view addSubview:cb];
+    [cb sizeToFit];
+    
+    self.cameraButton = cb;
+    
+    UIButton *fb = [UIButton buttonWithType:UIButtonTypeSystem];
+    [fb setTitle:@"Folders" forState:UIControlStateNormal];
+    [self.view addSubview:fb];
+    [fb sizeToFit];
+    
+    self.foldersButton = fb;
 }
 
- // Dispose of any resources that can be recreated.
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)viewWillLayoutSubviews
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [super viewWillLayoutSubviews];
+    
+    [self.cameraButton setFrame:CGRectMake(100, 150, 120, 60)];
+    [self.foldersButton setFrame:CGRectMake(100, 300, 120, 60)];
 }
-*/
 
 @end
