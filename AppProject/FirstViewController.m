@@ -7,11 +7,17 @@
 //
 
 #import "FirstViewController.h"
+#import "CameraViewController.h"
+#import "TableViewController.h"
+#import "PhotosViewController.h"
+#import <ACPButton/ACPButton.h>
 
-@interface FirstViewController ()
+@interface FirstViewController () <UIActionSheetDelegate>
 
-@property (nonatomic, strong) UIButton *cameraButton;
-@property (nonatomic, strong) UIButton *foldersButton;
+
+
+@property (nonatomic, strong) ACPButton *cameraButton;
+@property (nonatomic, strong) ACPButton *foldersButton;
 
 @end
 
@@ -23,19 +29,23 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor clearColor];
     
-    UIButton *cb = [UIButton buttonWithType:UIButtonTypeSystem];
+    ACPButton *cb = [ACPButton buttonWithType:UIButtonTypeCustom];
     [cb setTitle:@"Create Folder" forState:UIControlStateNormal];
+    [cb setStyleType:ACPButtonBlue];
+    
     [self.view addSubview:cb];
     [cb sizeToFit];
+    [cb addTarget:self action:@selector(cbButtonPushed) forControlEvents:UIControlEventTouchUpInside];
     
     self.cameraButton = cb;
     
-    UIButton *fb = [UIButton buttonWithType:UIButtonTypeSystem];
+    ACPButton *fb = [UIButton buttonWithType:UIButtonTypeSystem];
     [fb setTitle:@"Folders" forState:UIControlStateNormal];
     [self.view addSubview:fb];
     [fb sizeToFit];
+    [fb addTarget:self action:@selector(fbButtonPushed) forControlEvents:UIControlEventTouchUpInside];
     
     self.foldersButton = fb;
 }
@@ -46,6 +56,30 @@
     
     [self.cameraButton setFrame:CGRectMake(100, 150, 120, 60)];
     [self.foldersButton setFrame:CGRectMake(100, 300, 120, 60)];
+}
+
+- (void)cbButtonPushed
+{
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Fron Library", nil];
+    [actionSheet showInView:self.view];
+    
+    
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSLog(@"%d", buttonIndex);
+    if(buttonIndex == 0){
+        [self.navigationController pushViewController:[[CameraViewController alloc] init] animated:YES];
+    }
+    if(buttonIndex == 1){
+        [self.navigationController pushViewController:[[PhotosViewController alloc] init] animated:YES];
+    }
+}
+
+- (void)fbButtonPushed
+{
+    [self.navigationController pushViewController:[[TableViewController alloc] init]  animated:YES];
 }
 
 @end
