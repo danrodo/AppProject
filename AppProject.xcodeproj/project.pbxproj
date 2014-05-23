@@ -125,7 +125,6 @@
 		250E5717192A79B200304614 /* AppProject */ = {
 			isa = PBXGroup;
 			children = (
-				250E5720192A79B200304614 /* AppDelegate.h */,
 				2505CAC3192D136D00372038 /* CameraViewController.h */,
 				2505CAC4192D136D00372038 /* CameraViewController.m */,
 				2505CAC9192D27FA00372038 /* PhotosViewController.h */,
@@ -134,6 +133,7 @@
 				250E5741192A79CE00304614 /* FirstViewController.m */,
 				2505CAC6192D1D6700372038 /* TableViewController.h */,
 				2505CAC7192D1D6700372038 /* TableViewController.m */,
+				250E5720192A79B200304614 /* AppDelegate.h */,
 				250E5721192A79B200304614 /* AppDelegate.m */,
 				250E5723192A79B200304614 /* Images.xcassets */,
 				250E5718192A79B200304614 /* Supporting Files */,

@@ -14,8 +14,6 @@
 
 @interface FirstViewController () <UIActionSheetDelegate>
 
-
-
 @property (nonatomic, strong) ACPButton *cameraButton;
 @property (nonatomic, strong) ACPButton *foldersButton;
 
@@ -41,8 +39,10 @@
     
     self.cameraButton = cb;
     
-    ACPButton *fb = [UIButton buttonWithType:UIButtonTypeSystem];
+    ACPButton *fb = [ACPButton buttonWithType:UIButtonTypeSystem];
     [fb setTitle:@"Folders" forState:UIControlStateNormal];
+    [fb setStyleType:ACPButtonBlue];
+    
     [self.view addSubview:fb];
     [fb sizeToFit];
     [fb addTarget:self action:@selector(fbButtonPushed) forControlEvents:UIControlEventTouchUpInside];
@@ -54,8 +54,11 @@
 {
     [super viewWillLayoutSubviews];
     
-    [self.cameraButton setFrame:CGRectMake(100, 150, 120, 60)];
-    [self.foldersButton setFrame:CGRectMake(100, 300, 120, 60)];
+    self.cameraButton.center = self.view.center;
+    self.foldersButton.center = self.view.center;
+    
+    [self.cameraButton setFrame:CGRectMake(self.view.frame.size.width/2, 150, 120, 60)];
+    [self.foldersButton setFrame:CGRectMake(self.view.frame.size.width/2, 300, 120, 60)];
 }
 
 - (void)cbButtonPushed
@@ -63,8 +66,7 @@
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Fron Library", nil];
     [actionSheet showInView:self.view];
-    
-    
+     
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
