@@ -14,6 +14,7 @@
 
 @interface FirstViewController () <UIActionSheetDelegate>
 
+@property (nonatomic, strong) UITextField *albumName;
 @property (nonatomic, strong) ACPButton *cameraButton;
 @property (nonatomic, strong) ACPButton *foldersButton;
 
