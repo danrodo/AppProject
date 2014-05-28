@@ -23,6 +23,7 @@
 		250E5735192A79B200304614 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 250E5733192A79B200304614 /* InfoPlist.strings */; };
 		250E5737192A79B200304614 /* AppProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E5736192A79B200304614 /* AppProjectTests.m */; };
 		250E5742192A79CE00304614 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E5741192A79CE00304614 /* FirstViewController.m */; };
+		2545C2411930F90F00582CAE /* CreateFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2545C2401930F90F00582CAE /* CreateFolderViewController.m */; };
 		B5968FF83F5F48D1B4088B80 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B51E025AA6FA4928B0801FC8 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,8 @@
 		250E5736192A79B200304614 /* AppProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppProjectTests.m; sourceTree = "<group>"; };
 		250E5740192A79CE00304614 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		250E5741192A79CE00304614 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		2545C23F1930F90F00582CAE /* CreateFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewController.h; sourceTree = "<group>"; };
+		2545C2401930F90F00582CAE /* CreateFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateFolderViewController.m; sourceTree = "<group>"; };
 		B51E025AA6FA4928B0801FC8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D74D46017FF649ED94E513B7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,10 +130,12 @@
 			children = (
 				2505CAC3192D136D00372038 /* CameraViewController.h */,
 				2505CAC4192D136D00372038 /* CameraViewController.m */,
-				2505CAC9192D27FA00372038 /* PhotosViewController.h */,
 				2505CACA192D27FA00372038 /* PhotosViewController.m */,
+				2505CAC9192D27FA00372038 /* PhotosViewController.h */,
 				250E5740192A79CE00304614 /* FirstViewController.h */,
 				250E5741192A79CE00304614 /* FirstViewController.m */,
+				2545C23F1930F90F00582CAE /* CreateFolderViewController.h */,
+				2545C2401930F90F00582CAE /* CreateFolderViewController.m */,
 				2505CAC6192D1D6700372038 /* TableViewController.h */,
 				2505CAC7192D1D6700372038 /* TableViewController.m */,
 				250E5720192A79B200304614 /* AppDelegate.h */,
@@ -303,6 +308,7 @@
 				250E5722192A79B200304614 /* AppDelegate.m in Sources */,
 				2505CACB192D27FA00372038 /* PhotosViewController.m in Sources */,
 				2505CAC5192D136D00372038 /* CameraViewController.m in Sources */,
+				2545C2411930F90F00582CAE /* CreateFolderViewController.m in Sources */,
 				250E5742192A79CE00304614 /* FirstViewController.m in Sources */,
 				2505CAC8192D1D6700372038 /* TableViewController.m in Sources */,
 				250E571E192A79B200304614 /* main.m in Sources */,

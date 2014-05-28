@@ -10,13 +10,15 @@
 #import "CameraViewController.h"
 #import "TableViewController.h"
 #import "PhotosViewController.h"
+#import "CreateFolderViewController.h"
 #import <ACPButton/ACPButton.h>
 
-@interface FirstViewController () <UIActionSheetDelegate>
+@interface FirstViewController () <UIActionSheetDelegate, CFDelegate>
 
 @property (nonatomic, strong) UITextField *albumName;
 @property (nonatomic, strong) ACPButton *cameraButton;
 @property (nonatomic, strong) ACPButton *foldersButton;
+@property (nonatomic, strong) NSMutableArray *foldersArray;
 
 @end
 
@@ -27,6 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.foldersArray = [NSMutableArray array];
     
     self.view.backgroundColor = [UIColor clearColor];
     
@@ -54,20 +58,29 @@
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
+
+    [self.cameraButton setFrame:CGRectMake(0 , 0, 120, 60)];
+    self.cameraButton.center = CGPointMake(self.view.center.x, 150);
     
-    self.cameraButton.center = self.view.center;
-    self.foldersButton.center = self.view.center;
-    
-    [self.cameraButton setFrame:CGRectMake(self.view.frame.size.width/2, 150, 120, 60)];
-    [self.foldersButton setFrame:CGRectMake(self.view.frame.size.width/2, 300, 120, 60)];
+    [self.foldersButton setFrame:CGRectMake(0, 200, 120, 60)];
+    self.foldersButton.center = CGPointMake(self.view.center.x, 250);
 }
 
 - (void)cbButtonPushed
 {
     
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Fron Library", nil];
-    [actionSheet showInView:self.view];
-     
+//    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Fron Library", nil];
+//    [actionSheet showInView:self.view];
+    
+    CreateFolderViewController *cVC = [[CreateFolderViewController alloc] init];
+    cVC.delegate = self;
+    [self presentViewController:cVC animated:YES completion:nil];
+    
+}
+
+- (void)didGetText:(NSString *)text
+{
+    [self.foldersArray addObject:text];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -82,7 +95,9 @@
 
 - (void)fbButtonPushed
 {
-    [self.navigationController pushViewController:[[TableViewController alloc] init]  animated:YES];
+    TableViewController *tableVC = [[TableViewController alloc] init];
+    tableVC.albums = self.foldersArray;
+    [self.navigationController pushViewController:tableVC  animated:YES];
 }
 
 @end
