@@ -19,10 +19,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"generic title";
-    
-    //[self refresh];
-
+    self.title = @"Albums";
 }
 
 

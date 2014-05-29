@@ -7,9 +7,12 @@
 //
 
 #import "CreateFolderViewController.h"
+#import "FirstViewController.h"
+#import "CameraViewController.h"
+#import "PhotosViewController.h"
 #import <ACPButton/ACPButton.h>
 
-@interface CreateFolderViewController () <UITextFieldDelegate>
+@interface CreateFolderViewController () <UITextFieldDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) ACPButton *saveButton;
 @property (nonatomic, strong) ACPButton *cancelButton;
@@ -63,12 +66,25 @@
 
 - (void)sbButtonPushed
 {
-    
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Fron Library", nil];
+        [actionSheet showInView:self.view];
 }
 
 - (void)cbButtonPushed
 {
-    
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"cb button pushed");
+    }];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSLog(@"%d", buttonIndex);
+    if(buttonIndex == 0){
+        [self.navigationController pushViewController:[[CameraViewController alloc] init] animated:YES];
+    }
+    if(buttonIndex == 1){
+        [self.navigationController pushViewController:[[PhotosViewController alloc] init] animated:YES];
+   }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -76,7 +92,6 @@
     [self dismissViewControllerAnimated:YES completion:^{
         
         [self.delegate didGetText:textField.text];
-        
     }];
     
     return YES;

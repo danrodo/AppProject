@@ -68,10 +68,6 @@
 
 - (void)cbButtonPushed
 {
-    
-//    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Fron Library", nil];
-//    [actionSheet showInView:self.view];
-    
     CreateFolderViewController *cVC = [[CreateFolderViewController alloc] init];
     cVC.delegate = self;
     [self presentViewController:cVC animated:YES completion:nil];
@@ -81,16 +77,6 @@
 - (void)didGetText:(NSString *)text
 {
     [self.foldersArray addObject:text];
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSLog(@"%d", buttonIndex);
-    if(buttonIndex == 0){
-        [self.navigationController pushViewController:[[CameraViewController alloc] init] animated:YES];
-    }
-    if(buttonIndex == 1){
-        [self.navigationController pushViewController:[[PhotosViewController alloc] init] animated:YES];
-    }
 }
 
 - (void)fbButtonPushed
